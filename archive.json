@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-20T01:14:54.729217+00:00",
+  "timestamp": "2024-02-22T01:15:34.842843+00:00",
   "repo": "jsalowey/wimse-arch",
   "labels": [
     {
@@ -128,7 +128,7 @@
       "labels": [],
       "body": "Initial try at the definition of a workload.",
       "createdAt": "2024-02-08T06:17:40Z",
-      "updatedAt": "2024-02-12T04:56:37Z",
+      "updatedAt": "2024-02-22T00:16:23Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "2cff224275df2c75b133c5246d9149f60760ded9",
@@ -146,6 +146,13 @@
           "body": "Closes issue #2 ",
           "createdAt": "2024-02-12T04:36:23Z",
           "updatedAt": "2024-02-12T04:36:23Z"
+        },
+        {
+          "author": "yaroslavros",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think we could be a bit more specific here.\r\nEvery software is executed for a purpose...\r\n\r\nI believe the key practical difference between workload identity and user run software such as browsers and interactive applications in that there is no user to perform some interactive authentication flow. Maybe we could try and reflect that?\r\n\r\nFor example,\r\n\r\nFor the purpose of this document, workload is defined as a non-interactive instance of software interacting over network with other software and services. Certain workloads can be live for a very short durations of time (nanoseconds) and run for a specific purpose such as to provide a response to an API request. Other kinds of workloads might be executed for a very long durations such as months or years - examples include database services and machine learning training jobs.",
+          "createdAt": "2024-02-22T00:16:21Z",
+          "updatedAt": "2024-02-22T00:16:21Z"
         }
       ],
       "reviews": []
@@ -190,7 +197,7 @@
       "labels": [],
       "body": "Closes Issue #4 ",
       "createdAt": "2024-02-19T22:02:09Z",
-      "updatedAt": "2024-02-19T22:02:09Z",
+      "updatedAt": "2024-02-22T00:19:24Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "aca2dac6d0ccf037d0c7146ee63b5e891b5de869",
@@ -202,7 +209,34 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPTb0M5w7fsk",
+          "commit": {
+            "abbreviatedOid": "2eac261"
+          },
+          "author": "yaroslavros",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Great start!",
+          "createdAt": "2024-02-22T00:17:51Z",
+          "updatedAt": "2024-02-22T00:19:24Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Does not have to be \"micro\"service. I would suggest generalising this to any service.",
+              "createdAt": "2024-02-22T00:17:51Z",
+              "updatedAt": "2024-02-22T00:19:24Z"
+            },
+            {
+              "originalPosition": 31,
+              "body": "SOme -> Some",
+              "createdAt": "2024-02-22T00:18:33Z",
+              "updatedAt": "2024-02-22T00:19:24Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 8,
@@ -216,7 +250,7 @@
       "labels": [],
       "body": "closes issue #5",
       "createdAt": "2024-02-19T22:02:36Z",
-      "updatedAt": "2024-02-19T22:02:36Z",
+      "updatedAt": "2024-02-22T00:29:37Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "aca2dac6d0ccf037d0c7146ee63b5e891b5de869",
@@ -228,7 +262,34 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPTb0M5w7hGB",
+          "commit": {
+            "abbreviatedOid": "b428122"
+          },
+          "author": "yaroslavros",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Few minor comments.\r\n\r\nAgain, great start!",
+          "createdAt": "2024-02-22T00:24:49Z",
+          "updatedAt": "2024-02-22T00:29:37Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "\"hop-by-hop\" and \"end-to-end\" mean wildly different things to different people.\r\n\r\nI would suggest \"When a security layer such as TLS is deployed in this environments in combination with TLS decryption middleware such as load balancers, gateways, proxies, and firewalls, the protection is provided only between each adjacent pair of TLS endpoints. There are no guarantees of correct identity passthrough in those middleware TLS interception devices and services.\"",
+              "createdAt": "2024-02-22T00:24:50Z",
+              "updatedAt": "2024-02-22T00:29:37Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "I would add:\r\nThis creates privacy risks and potential surface for reconnaissance attacks. If observed tokens can be reused, this also may allow attackers to impersonate workloads.",
+              "createdAt": "2024-02-22T00:28:58Z",
+              "updatedAt": "2024-02-22T00:29:37Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
