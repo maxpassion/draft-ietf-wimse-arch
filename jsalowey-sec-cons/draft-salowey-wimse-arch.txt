@@ -5,10 +5,10 @@
 wimse                                                         J. Salowey
 Internet-Draft                                                    Venafi
 Intended status: Informational                              Y. Rosomakho
-Expires: 22 August 2024                                                 
+Expires: 29 August 2024                                                 
                                                            H. Tschofenig
                                                                  Siemens
-                                                        19 February 2024
+                                                        26 February 2024
 
 
   Workload Identity in a Multi System Environment (WIMSE) Architecture
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2024.
+   This Internet-Draft will expire on 29 August 2024.
 
 Copyright Notice
 
@@ -105,10 +105,13 @@ Table of Contents
    deployments security controls are deployed for internal
    communications at lower layers to reduce the risk of traffic
    observation and modification for network communications.  When a
-   security layer such as TLS is deployed in these environments the
-   protection is usually hop-by-hop rather than end-to-end.  Where TLS
-   or other protection mechanisms terminate, information is left in the
-   clear and information may be disclosed or modified.
+   security layer such as TLS is deployed in these environments TLS may
+   be termiated in various places including the workload itself and in
+   various middleware devices such as load balancers, gateways, proxies,
+   and firewalls.  Therefore protection is provided only between each
+   adjacent pair of TLS endpoints.  There are no guarantees of
+   confidentiality, integrity and correct identity passthrough in those
+   middleware devices and services.
 
 5.1.2.  Information Disclosure
 
@@ -120,6 +123,9 @@ Table of Contents
    information in this logs may be made available to other systems with
    less stringent access controls which may result in this token falling
    into an attackers hands who then uses it to compromise a system.
+   This creates privacy risks and potential surface for reconnaissance
+   attacks.  If observed tokens can be reused, this also may allow
+   attackers to impersonate workloads.
 
 5.1.3.  Workload Compromise
 
