@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-25T01:20:12.216036+00:00",
+  "timestamp": "2024-02-27T01:15:02.170737+00:00",
   "repo": "jsalowey/wimse-arch",
   "labels": [
     {
@@ -121,24 +121,26 @@
       "id": "PR_kwDOLPTb0M5mVjuq",
       "title": "draft workload definition",
       "url": "https://github.com/jsalowey/wimse-arch/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "jsalowey",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Initial try at the definition of a workload.",
       "createdAt": "2024-02-08T06:17:40Z",
-      "updatedAt": "2024-02-22T00:16:23Z",
+      "updatedAt": "2024-02-26T04:46:20Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "2cff224275df2c75b133c5246d9149f60760ded9",
       "headRepository": "jsalowey/wimse-arch",
       "headRefName": "definition-1",
-      "headRefOid": "41106e3cc70c3c249c8e3dd2e2fce2ca7f7e7466",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "ae0d931e6c7d9815b7e441928105311abe8a81c5",
+      "closedAt": "2024-02-26T04:46:20Z",
+      "mergedAt": "2024-02-26T04:46:20Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "c279f126246aa42478d81cfe7518393cf135ecb8"
+      },
       "comments": [
         {
           "author": "jsalowey",
@@ -153,6 +155,13 @@
           "body": "I think we could be a bit more specific here.\r\nEvery software is executed for a purpose...\r\n\r\nI believe the key practical difference between workload identity and user run software such as browsers and interactive applications in that there is no user to perform some interactive authentication flow. Maybe we could try and reflect that?\r\n\r\nFor example,\r\n\r\nFor the purpose of this document, workload is defined as a non-interactive instance of software interacting over network with other software and services. Certain workloads can be live for a very short durations of time (nanoseconds) and run for a specific purpose such as to provide a response to an API request. Other kinds of workloads might be executed for a very long durations such as months or years - examples include database services and machine learning training jobs.",
           "createdAt": "2024-02-22T00:16:21Z",
           "updatedAt": "2024-02-22T00:16:21Z"
+        },
+        {
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "body": "I think I understand what your are saying, but I'm not sure I can express it yet.  Also it seems there maybe some special workloads that do interact with user authentication mechanisms.  Perhaps those are architecturally distinct pieces \"Authenticaition Services\"",
+          "createdAt": "2024-02-26T04:30:23Z",
+          "updatedAt": "2024-02-26T04:30:23Z"
         }
       ],
       "reviews": []
@@ -190,24 +199,26 @@
       "id": "PR_kwDOLPTb0M5nVUqT",
       "title": "Initial Use Cases",
       "url": "https://github.com/jsalowey/wimse-arch/pull/7",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "jsalowey",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Closes Issue #4 ",
       "createdAt": "2024-02-19T22:02:09Z",
-      "updatedAt": "2024-02-22T00:19:24Z",
+      "updatedAt": "2024-02-26T04:33:21Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "aca2dac6d0ccf037d0c7146ee63b5e891b5de869",
       "headRepository": "jsalowey/wimse-arch",
       "headRefName": "jsalowey-use-case",
-      "headRefOid": "2eac2615fa9af8ea8d27a1aa6ec08756bd8634cd",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "3f29f02778c901601eefd86c6cf0e4bad5278cee",
+      "closedAt": "2024-02-26T04:33:20Z",
+      "mergedAt": "2024-02-26T04:33:20Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "61b40467e776f8a01c3d6725da1c31307524248c"
+      },
       "comments": [],
       "reviews": [
         {
@@ -235,6 +246,26 @@
               "updatedAt": "2024-02-22T00:19:24Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M5xPsJ3",
+          "commit": {
+            "abbreviatedOid": "2eac261"
+          },
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-26T04:31:56Z",
+          "updatedAt": "2024-02-26T04:31:56Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Agree",
+              "createdAt": "2024-02-26T04:31:56Z",
+              "updatedAt": "2024-02-26T04:31:56Z"
+            }
+          ]
         }
       ]
     },
@@ -243,24 +274,26 @@
       "id": "PR_kwDOLPTb0M5nVUwQ",
       "title": "Initial Security Considerations",
       "url": "https://github.com/jsalowey/wimse-arch/pull/8",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "jsalowey",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "closes issue #5",
       "createdAt": "2024-02-19T22:02:36Z",
-      "updatedAt": "2024-02-22T00:29:37Z",
+      "updatedAt": "2024-02-26T04:17:15Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "aca2dac6d0ccf037d0c7146ee63b5e891b5de869",
       "headRepository": "jsalowey/wimse-arch",
       "headRefName": "jsalowey-sec-cons",
-      "headRefOid": "b428122ec72ae43749428400dab1bd4f4729b972",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "495ac3d04ef271286d23200d51319eabea96dac2",
+      "closedAt": "2024-02-26T04:17:15Z",
+      "mergedAt": "2024-02-26T04:17:15Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "7db9a43a5668862bd1031e2a1ae69590d0e89013"
+      },
       "comments": [],
       "reviews": [
         {
@@ -286,6 +319,46 @@
               "body": "I would add:\r\nThis creates privacy risks and potential surface for reconnaissance attacks. If observed tokens can be reused, this also may allow attackers to impersonate workloads.",
               "createdAt": "2024-02-22T00:28:58Z",
               "updatedAt": "2024-02-22T00:29:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M5xPp2S",
+          "commit": {
+            "abbreviatedOid": "b428122"
+          },
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-26T04:16:57Z",
+          "updatedAt": "2024-02-26T04:16:57Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "I made an attempt and incorporating this change. ",
+              "createdAt": "2024-02-26T04:16:57Z",
+              "updatedAt": "2024-02-26T04:16:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M5xPp3r",
+          "commit": {
+            "abbreviatedOid": "b428122"
+          },
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-26T04:17:04Z",
+          "updatedAt": "2024-02-26T04:17:05Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Added",
+              "createdAt": "2024-02-26T04:17:05Z",
+              "updatedAt": "2024-02-26T04:17:05Z"
             }
           ]
         }
