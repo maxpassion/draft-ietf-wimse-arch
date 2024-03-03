@@ -1168,6 +1168,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-asynchronous-and-batch-requ" class="internal xref">Asynchronous and Batch Requests</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
+                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-cross-boundary-workload-ide" class="internal xref">Cross-boundary Workload Identity</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6.2.1">
+                    <p id="section-toc.1-1.3.2.6.2.1.1"><a href="#section-3.6.1" class="auto internal xref">3.6.1</a>.  <a href="#name-egress-identity-generalizat" class="internal xref">Egress Identity Generalization</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6.2.2">
+                    <p id="section-toc.1-1.3.2.6.2.2.1"><a href="#section-3.6.2" class="auto internal xref">3.6.2</a>.  <a href="#name-inbound-gateway-identity-va" class="internal xref">Inbound Gateway Identity Validation</a></p>
+</li>
+                </ul>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
@@ -1239,6 +1250,18 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </li>
         </ul>
 <p id="section-2.1-2">A workload is a running instance of software executing for a specific purpose that interacts with other parts of a larger system. A workload may exist for a very short durations of time (nanoseconds) and run for a specific purpose such as to provide a response to an API request. Other kinds of workloads may execute for a very long duration such as months or years - examples include database services and machine learning training jobs.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.1-3.1">
+            <p id="section-2.1-3.1.1">Security Context<a href="#section-2.1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-2.1-4">A security context contains information needed for a workload to pefrom its function. This information is often used for authorization, accounting and auditing purposes and often contains information about the request being made. Some examples inlcude user information, software and hardware information or information about what processing has already happened for the request. Different pieces of context information may originate from different authorities.<a href="#section-2.1-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.1-5.1">
+            <p id="section-2.1-5.1.1">Identity Proxy<a href="#section-2.1-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-2.1-6">Identity proxy is an intermediary that can inspect, replace or augment workload identity and security context information. Identity proxy can be a capability of a transparent network service, such as a security gateway, or it can be implemented in service performing explicit connection processing, such as a reverse proxy or a CDN service.<a href="#section-2.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1362,6 +1385,31 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-asynchronous-and-batch-requ">
 <a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-asynchronous-and-batch-requ" class="section-name selfRef">Asynchronous and Batch Requests</a>
       </h3>
+</section>
+</div>
+<div id="cross-boundary-workload-identity">
+<section id="section-3.6">
+        <h3 id="name-cross-boundary-workload-ide">
+<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-cross-boundary-workload-ide" class="section-name selfRef">Cross-boundary Workload Identity</a>
+        </h3>
+<p id="section-3.6-1">As workloads often need to communicate across administrative boundaries, extra care needs to be taken when it comes to identity communication to ensure scalability and privacy.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
+<div id="egress-identity-generalization">
+<section id="section-3.6.1">
+          <h4 id="name-egress-identity-generalizat">
+<a href="#section-3.6.1" class="section-number selfRef">3.6.1. </a><a href="#name-egress-identity-generalizat" class="section-name selfRef">Egress Identity Generalization</a>
+          </h4>
+<p id="section-3.6.1-1">A workload communicating with a service, or another workload provided by external organization may need to provide more generic identity information. Detailed identity of internal workload originating the communication is relevant inside the administrative domain but could be excessive for the outside world and expose internal topology information that can be sensitive.<a href="#section-3.6.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.6.1-2">A security gateway at the edge of administrative domain can be used to validate identity information of the workload, perform context specific authorization of the transaction and replace workload specific identity with a generalized one for given administrative domain.<a href="#section-3.6.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="inbound-gateway-identity-validation">
+<section id="section-3.6.2">
+          <h4 id="name-inbound-gateway-identity-va">
+<a href="#section-3.6.2" class="section-number selfRef">3.6.2. </a><a href="#name-inbound-gateway-identity-va" class="section-name selfRef">Inbound Gateway Identity Validation</a>
+          </h4>
+<p id="section-3.6.2-1">Inbound security gateway is a common design pattern for service protection. This functionality is often found in CDN services, API gateways, load balancers, Web Application Firewalls (WAFs) and other security solutions. Workload identity verification should be performed as a part of these security services. After validation of workload identity, the gateway may either leave it unmodified or replace it with its own identity to be validated by the destination.<a href="#section-3.6.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 </section>
