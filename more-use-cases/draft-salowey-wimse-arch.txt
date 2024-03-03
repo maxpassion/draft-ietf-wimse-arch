@@ -141,8 +141,8 @@ Table of Contents
    identity.  They are typically signed to prevent forgery, however
    since these credentials are not bound to other information its
    possible that they could be stolen and reused elsewhere.  To reduce
-   some of thee risks, bearer tokens may have short lifespans and may be
-   rotated often.
+   some of these risks, bearer tokens may have short lifespans and may
+   be rotated often.
 
    X.509 certificate credentials consist of two parts, a public key
    certificate that is a signed data structure that contains a public
