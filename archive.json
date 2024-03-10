@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-07T01:02:52.258346+00:00",
+  "timestamp": "2024-03-10T01:20:23.365635+00:00",
   "repo": "jsalowey/wimse-arch",
   "labels": [
     {
@@ -522,6 +522,32 @@
       "mergeCommit": {
         "oid": "37680e474fe29ca0c22f5697bbec69e5b57c0e69"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOLPTb0M5o_h7x",
+      "title": "Define Agent and Attestation.",
+      "url": "https://github.com/jsalowey/wimse-arch/pull/14",
+      "state": "OPEN",
+      "author": "kenmccracken-google",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "1. added Attestation as a function performed within the Server box.\r\n2. defined Agent.\r\n3. defined Attestation.",
+      "createdAt": "2024-03-07T17:16:18Z",
+      "updatedAt": "2024-03-07T17:16:19Z",
+      "baseRepository": "jsalowey/wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "37680e474fe29ca0c22f5697bbec69e5b57c0e69",
+      "headRepository": "kenmccracken-google/wimse-arch",
+      "headRefName": "main",
+      "headRefOid": "69d2da82e7e4aeb2922737891d2cd9371e03ab0d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
