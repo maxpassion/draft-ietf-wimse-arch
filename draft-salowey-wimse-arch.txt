@@ -75,15 +75,17 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Architecture
      3.1.  Initial Workload Identity
-     3.2.  Attestation
-     3.3.  Identity Credentials
-     3.4.  Basic Service Authentication
-     3.5.  Security Context Establishment and Propagation
-     3.6.  Delegation and Impersonation
-     3.7.  Asynchronous and Batch Requests
-     3.8.  Cross-boundary Workload Identity
-       3.8.1.  Egress Identity Generalization
-       3.8.2.  Inbound Gateway Identity Validation
+     3.2.  Server
+     3.3.  Agent
+     3.4.  Attestation
+     3.5.  Identity Credentials
+     3.6.  Basic Service Authentication
+     3.7.  Security Context Establishment and Propagation
+     3.8.  Delegation and Impersonation
+     3.9.  Asynchronous and Batch Requests
+     3.10. Cross-boundary Workload Identity
+       3.10.1.  Egress Identity Generalization
+       3.10.2.  Inbound Gateway Identity Validation
    4.  Security Considerations
      4.1.  Traffic Interception
      4.2.  Information Disclosure
@@ -126,10 +128,14 @@ Table of Contents
    document.  A few variants (such as environment variables or domain
    sockets) have been used in deployments today.
 
-      +---------------+
-      |    Server     |
-      |               |
-      +---------------+
+     +-----------------+
+     |     Server      |
+     |                 |
+     |                 |
+     | +-------------+ |
+     | | Attestation | |
+     | +-------------+ |
+     +-----------------+
               ^|
               ||
               ||
@@ -229,13 +235,42 @@ Table of Contents
    *  Environment Variables - identity may also be injected into
       workloads using operating system environment variables.
 
-3.2.  Attestation
+3.2.  Server
 
-3.3.  Identity Credentials
+   The server issues workload identity credentials when requested by the
+   Agent.
 
-   The identity is provisioned to the workload as a set of credentials.
-   There are two main types of workload credentials: bearer tokens and
-   X.509 certificates.
+3.3.  Agent
+
+   The Agent performs the function of transmitting the initial workload
+   identity to the Server to obtain the workload identity credentials.
+   The Agent makes the workload identity credentials available to the
+   workload.
+
+   A task scheduler installs and starts a task containing the Agent on
+   the Host Operating System.  A Host Operating System function performs
+   attestation of the Agent-identity and issues a corresponding Agent-
+   credential to the Agent.  The Agent presents the Agent-credential
+   together with the Workload Identity to the Server to obtain the
+   Workload's Identity Credentials.
+
+3.4.  Attestation
+
+   Attestation is the function through which a task verifies the
+   identity of a separate Workload or task.
+
+   During Workload Attestation, the Server verifies the Agent-
+   credential, Workload Identity, and the permission of the Agent to
+   receive Credentials authenticating the Workload Identity.  The Server
+   can use a variety of means to verify that permission, including a
+   Policy decision based on the contents of a Workload Registration
+   database or requesting assistance from a trusted Identity Provider.
+
+3.5.  Identity Credentials
+
+   The Agent provisions the identity credentials to the workload.  There
+   are two main types of workload credentials: bearer tokens and X.509
+   certificates.
 
    Bearer tokens are tokens presented to another party as proof of
    identity.  They are typically signed to prevent forgery, however
@@ -252,7 +287,7 @@ Table of Contents
    the presenter has access to the private key that corresponds to the
    public key in the certificate.
 
-3.4.  Basic Service Authentication
+3.6.  Basic Service Authentication
 
    One of the most basic use cases for workload identity is for
    authenticating one workload to another such as in the case where one
@@ -298,7 +333,7 @@ Table of Contents
    *  TLS authentication of the server and HTTP request signing using a
       secret key.
 
-3.5.  Security Context Establishment and Propagation
+3.7.  Security Context Establishment and Propagation
 
    In a typical system of workloads additional information is needed in
    order for the workload to perform its function.  For example, it is
@@ -314,21 +349,21 @@ Table of Contents
    only be used by an authorized workload and that the context
    information originated from an authorized workload.
 
-3.6.  Delegation and Impersonation
+3.8.  Delegation and Impersonation
 
    TBD.
 
-3.7.  Asynchronous and Batch Requests
+3.9.  Asynchronous and Batch Requests
 
    TBD.
 
-3.8.  Cross-boundary Workload Identity
+3.10.  Cross-boundary Workload Identity
 
    As workloads often need to communicate across administrative
    boundaries, extra care needs to be taken when it comes to identity
    communication to ensure scalability and privacy.
 
-3.8.1.  Egress Identity Generalization
+3.10.1.  Egress Identity Generalization
 
    A workload communicating with a service, or another workload provided
    by an external organization may need to provide more generic identity
@@ -343,7 +378,7 @@ Table of Contents
    workload specific identity with a generalized one for a given
    administrative domain.
 
-3.8.2.  Inbound Gateway Identity Validation
+3.10.2.  Inbound Gateway Identity Validation
 
    Inbound security gateway is a common design pattern for service
    protection.  This functionality is often found in CDN services, API
