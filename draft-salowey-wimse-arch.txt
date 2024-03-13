@@ -5,9 +5,9 @@
 wimse                                                         J. Salowey
 Internet-Draft                                                    Venafi
 Intended status: Informational                              Y. Rosomakho
-Expires: 5 September 2024                                        Zscaler
+Expires: 14 September 2024                                       Zscaler
                                                            H. Tschofenig
-                                                            4 March 2024
+                                                           13 March 2024
 
 
   Workload Identity in a Multi System Environment (WIMSE) Architecture
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 14 September 2024.
 
 Copyright Notice
 
@@ -107,15 +107,15 @@ Table of Contents
    trust anchors.  We use the term "identity" in a generic way to
    express that the information may vary with deployments since
    workloads run applications and some of these applications may require
-   X.509 cerificates (along with the private key), or JSON Web Tokens
+   X.509 certificates (along with the private key), or JSON Web Tokens
    (JWTs) acting as bearer tokens at the application layer, or both.
 
    Figure 1 shows the software layering at a host running workloads.  As
    the workloads get started, they get their identity provisioned with
    the help of an agent.  The agent is responsible for interacting with
-   a server that ensures workloads in set of hosts are managed
-   conviently and identity provisioned to workloads are associated with
-   the expected authorization privileges.  The server manages the
+   a server that ensures workloads in a set of hosts are managed
+   conveniently and identity provisioned to workloads are associated
+   with the expected authorization privileges.  The server manages the
    lifecycle of the workloads with the help of the agent.  The agent may
    also need to request attestation information about the hardware,
    lower layer software/firmware, and characteristics of the workload
@@ -123,7 +123,7 @@ Table of Contents
 
    How the workload obtains identity information and interacts with the
    agent is subject to different implementations, as described in this
-   document.  A few variants (such as environmet variables or domain
+   document.  A few variants (such as environment variables or domain
    sockets) have been used in deployments today.
 
       +---------------+
@@ -193,9 +193,9 @@ Table of Contents
    *  Security Context
 
    A security context contains information needed for a workload to
-   pefrom its function.  This information is often used for
+   perform its function.  This information is often used for
    authorization, accounting and auditing purposes and often contains
-   information about the request being made.  Some examples inlcude user
+   information about the request being made.  Some examples include user
    information, software and hardware information or information about
    what processing has already happened for the request.  Different
    pieces of context information may originate from different
@@ -248,8 +248,8 @@ Table of Contents
    certificate that is a signed data structure that contains a public
    key and identity information and a private key which.  The
    certificate is sent during authentication, however the private key is
-   kept secret and only used in cryptographic computation to to prove
-   that the presenter has access to the private that corresponds to the
+   kept secret and only used in cryptographic computation to prove that
+   the presenter has access to the private key that corresponds to the
    public key in the certificate.
 
 3.4.  Basic Service Authentication
@@ -331,17 +331,17 @@ Table of Contents
 3.8.1.  Egress Identity Generalization
 
    A workload communicating with a service, or another workload provided
-   by external organization may need to provide more generic identity
+   by an external organization may need to provide more generic identity
    information.  Detailed identity of internal workload originating the
    communication is relevant inside the administrative domain but could
    be excessive for the outside world and expose internal topology
    information that can be sensitive.
 
-   A security gateway at the edge of administrative domain can be used
-   to validate identity information of the workload, perform context
-   specific authorization of the transaction and replace workload
-   specific identity with a generalized one for given administrative
-   domain.
+   A security gateway at the edge of an administrative domain can be
+   used to validate identity information of the workload, perform
+   context specific authorization of the transaction and replace
+   workload specific identity with a generalized one for a given
+   administrative domain.
 
 3.8.2.  Inbound Gateway Identity Validation
 
