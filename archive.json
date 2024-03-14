@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-12T01:15:13.496258+00:00",
+  "timestamp": "2024-03-14T01:15:47.254259+00:00",
   "repo": "jsalowey/wimse-arch",
   "labels": [
     {
@@ -530,50 +530,108 @@
       "id": "PR_kwDOLPTb0M5o_h7x",
       "title": "Define Agent and Attestation.",
       "url": "https://github.com/jsalowey/wimse-arch/pull/14",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "kenmccracken-google",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "1. added Attestation as a function performed within the Server box.\r\n2. defined Agent.\r\n3. defined Attestation.",
       "createdAt": "2024-03-07T17:16:18Z",
-      "updatedAt": "2024-03-07T17:16:19Z",
+      "updatedAt": "2024-03-13T19:53:15Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "37680e474fe29ca0c22f5697bbec69e5b57c0e69",
       "headRepository": "kenmccracken-google/wimse-arch",
       "headRefName": "main",
-      "headRefOid": "69d2da82e7e4aeb2922737891d2cd9371e03ab0d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "9a5fe5d77c7fd30f513fced97e9acdcdd6b5fe46",
+      "closedAt": "2024-03-13T19:53:15Z",
+      "mergedAt": "2024-03-13T19:53:15Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "20b342db71d977df6a02a45f54b89c0c75a1feb5"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPTb0M5zOb5t",
+          "commit": {
+            "abbreviatedOid": "69d2da8"
+          },
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-13T04:58:35Z",
+          "updatedAt": "2024-03-13T04:59:07Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "This makes it sound like the security context closely bound to the workload identity credentials and is obtained in the same way through an agent.  I was thinking that the security context is a bit more loosely coupled with the identity, for example a token containing context information such as user name could reference the workload identity.  It may be delivered in line with a request instead of through an \"agent\".  Do you see the agent taking a broader role here or are we thinking of different things? ",
+              "createdAt": "2024-03-13T04:58:35Z",
+              "updatedAt": "2024-03-13T04:59:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M5zUXIR",
+          "commit": {
+            "abbreviatedOid": "69d2da8"
+          },
+          "author": "kenmccracken-google",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-13T16:50:01Z",
+          "updatedAt": "2024-03-13T16:50:01Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Good point.  I was trying to explain the role of the Agent contacting the Server for Identity credentials.  Perhaps this doesn't match what you had in mind.   I've proposed some new wording for the Agent description. \r\n\r\nThe Server takes the role of issuing Bearer tokens or X.509 certificates to the Workload.  I was a little confused that there was no Attestation function performed by the Server in the diagram before my PR.   I think the Agent would be responsible for obtaining Workload credentials from the Server.  The \"Host Operating System and Hardware\" could provide the Agent with locally-signed Agent-credentials that are not useful for Workload to Workload communication.  The Agent could use these credentials when contacting the Server with the Workload Identity, to obtain Workload Identity Credentials suitable for Workload to Workload communication.  There may or may not be a security perimeter between the Workload and the Agent. ",
+              "createdAt": "2024-03-13T16:50:01Z",
+              "updatedAt": "2024-03-13T16:50:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLPTb0M5zVxWY",
+          "commit": {
+            "abbreviatedOid": "9a5fe5d"
+          },
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "Thanks I think this helps my understanding, I'm sure we'll have more refining to do, but thanks for providing the text to get started. ",
+          "createdAt": "2024-03-13T19:53:07Z",
+          "updatedAt": "2024-03-13T19:53:07Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 15,
       "id": "PR_kwDOLPTb0M5pRxpN",
       "title": "Spelling and grammar",
       "url": "https://github.com/jsalowey/wimse-arch/pull/15",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "medina",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Small spelling and grammar updates in draft.",
       "createdAt": "2024-03-11T17:37:21Z",
-      "updatedAt": "2024-03-11T17:37:22Z",
+      "updatedAt": "2024-03-13T12:07:42Z",
       "baseRepository": "jsalowey/wimse-arch",
       "baseRefName": "main",
       "baseRefOid": "37680e474fe29ca0c22f5697bbec69e5b57c0e69",
       "headRepository": "medina/wimse-arch",
       "headRefName": "patch-1",
       "headRefOid": "bb52ba7fdf2248388a973b3b536801e145b737f4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-03-13T05:02:03Z",
+      "mergedAt": "2024-03-13T05:02:03Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "ff2388590c3cd56277e275798f50c8eb7347c8ad"
+      },
       "comments": [],
       "reviews": []
     }
