@@ -5,9 +5,9 @@
 wimse                                                         J. Salowey
 Internet-Draft                                                    Venafi
 Intended status: Informational                              Y. Rosomakho
-Expires: 14 September 2024                                       Zscaler
+Expires: 21 September 2024                                       Zscaler
                                                            H. Tschofenig
-                                                           13 March 2024
+                                                           20 March 2024
 
 
   Workload Identity in a Multi System Environment (WIMSE) Architecture
@@ -20,7 +20,7 @@ Abstract
    built and deployed as workloads, where a workload is defined as a
    running instance of software executing for a specific purpose.
 
-   Workloads need to be provisioned with a unique identity when they are
+   Workloads need to be provisioned with an identity when they are
    started.  This information and their security context needs to be
    passed along the call chain.  This architecture document discusses
    the motivation for designing and standardizing protocols and payloads
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 September 2024.
+   This Internet-Draft will expire on 21 September 2024.
 
 Copyright Notice
 
@@ -104,13 +104,18 @@ Table of Contents
    built and deployed as workloads, where a workload is defined as a
    running instance of software executing for a specific purpose.
 
-   Workloads need to be provisioned with a unique identity when they are
-   started.  Often, also other information needs to be provided, such as
-   trust anchors.  We use the term "identity" in a generic way to
-   express that the information may vary with deployments since
-   workloads run applications and some of these applications may require
-   X.509 certificates (along with the private key), or JSON Web Tokens
-   (JWTs) acting as bearer tokens at the application layer, or both.
+   Workloads need to be provisioned with an identity when they are
+   started.  Often, additional information needs to be provided, such as
+   trust anchors and security context details.  In the call chain some
+   of this context information may be removed or generalized depending
+   on application needs.
+
+   This architecture considers two ways to express identity information:
+   X.509 certificates embedded on TLS layer and JSON Web Tokens (JWTs)
+   acting as bearer tokens at the application layer.  Collectively,
+   these are referred to as WIMSE tokens.  The applicability of given
+   token format depends on application and security context and will be
+   explored in later sections.
 
    Figure 1 shows the software layering at a host running workloads.  As
    the workloads get started, they get their identity provisioned with
@@ -164,14 +169,14 @@ Table of Contents
 
    Figure 1: Host Software Layinger in a Workload Identity Architecture.
 
-   Once the workload is started and has obtained unique identity
-   information, it can offer its services.  Once a service is invoked on
-   a workload it may require interaction with other workloads.  An
-   example of such interaction is shown in
-   [I-D.ietf-oauth-transaction-tokens] where an externally-facing
-   endpoint is invoked using conventional authorization mechanism, such
-   as an OAuth 2.0 access token.  The interaction with other workload
-   may require the security context to be passed along the call chain.
+   Once the workload is started and has obtained identity information,
+   it can offer its services.  Once a service is invoked on a workload
+   it may require interaction with other workloads.  An example of such
+   interaction is shown in [I-D.ietf-oauth-transaction-tokens] where an
+   externally-facing endpoint is invoked using conventional
+   authorization mechanism, such as an OAuth 2.0 access token.  The
+   interaction with other workload may require the security context to
+   be passed along the call chain.
 
    In the rest of the document we describe terminology and use cases,
    discuss details of the architecture, and discuss threats.
@@ -189,16 +194,16 @@ Table of Contents
    *  Workload
 
    A workload is a running instance of software executing for a specific
-   purpose that interacts with other parts of a larger system.  A
-   workload may exist for a very short durations of time (nanoseconds)
-   and run for a specific purpose such as to provide a response to an
-   API request.  Other kinds of workloads may execute for a very long
-   duration such as months or years - examples include database services
-   and machine learning training jobs.
+   purpose.  Workload typically interacts with other parts of a larger
+   system.  A workload may exist for a very short durations of time
+   (nanoseconds) and run for a specific purpose such as to provide a
+   response to an API request.  Other kinds of workloads may execute for
+   a very long duration such as months or years - examples include
+   database services and machine learning training jobs.
 
    *  Security Context
 
-   A security context contains information needed for a workload to
+   A security context provides information needed for a workload to
    perform its function.  This information is often used for
    authorization, accounting and auditing purposes and often contains
    information about the request being made.  Some examples include user
@@ -212,7 +217,7 @@ Table of Contents
    Identity proxy is an intermediary that can inspect, replace or
    augment workload identity and security context information.  Identity
    proxy can be a capability of a transparent network service, such as a
-   security gateway, or it can be implemented in service performing
+   security gateway, or it can be implemented in a service performing
    explicit connection processing, such as a reverse proxy or a CDN
    service.
 
@@ -228,16 +233,16 @@ Table of Contents
    *  File System projection - in this mechanisms the identity is
       provisioned to the workload as an entity in the filesystem.
 
-   *  Local API - the identity is provided through an api such as a
-      local domain socket (SPIFFE) or local network API calls (Cloud
-      Provider Metadata Server).
+   *  Local API - the identity is provided through an API such as a
+      local domain socket (such as SPIFFE and QEMU guest agent) or local
+      network API calls (for example Cloud Provider Metadata Server).
 
    *  Environment Variables - identity may also be injected into
       workloads using operating system environment variables.
 
 3.2.  Server
 
-   The server issues workload identity credentials when requested by the
+   The Server issues workload identity credentials when requested by the
    Agent.
 
 3.3.  Agent
@@ -247,20 +252,13 @@ Table of Contents
    The Agent makes the workload identity credentials available to the
    workload.
 
-   A task scheduler installs and starts a task containing the Agent on
-   the Host Operating System.  A Host Operating System function performs
-   attestation of the Agent-identity and issues a corresponding Agent-
-   credential to the Agent.  The Agent presents the Agent-credential
-   together with the Workload Identity to the Server to obtain the
-   Workload's Identity Credentials.
-
 3.4.  Attestation
 
    Attestation is the function through which a task verifies the
-   identity of a separate Workload or task.
+   identity of a separate Workload.
 
-   During Workload Attestation, the Server verifies the Agent-
-   credential, Workload Identity, and the permission of the Agent to
+   During Workload Attestation, the Server verifies the Agent
+   credentials, Workload Identity, and the permission of the Agent to
    receive Credentials authenticating the Workload Identity.  The Server
    can use a variety of means to verify that permission, including a
    Policy decision based on the contents of a Workload Registration
@@ -268,16 +266,17 @@ Table of Contents
 
 3.5.  Identity Credentials
 
-   The Agent provisions the identity credentials to the workload.  There
-   are two main types of workload credentials: bearer tokens and X.509
-   certificates.
+   The Agent provisions the identity credentials to the workload.  These
+   credentials are later used to obtain WIMSE tokens: JWT tokens and
+   X.509 certificates.
 
-   Bearer tokens are tokens presented to another party as proof of
+   JWT bearer tokens are tokens presented to another party as proof of
    identity.  They are typically signed to prevent forgery, however
-   since these credentials are not bound to other information its
+   since these credentials are often not bound to other information its
    possible that they could be stolen and reused elsewhere.  To reduce
    some of these risks, bearer tokens may have short lifespans and may
-   be rotated often.
+   be rotated often or converted to a bound approach such as binding to
+   a TLS session.
 
    X.509 certificate credentials consist of two parts, a public key
    certificate that is a signed data structure that contains a public
@@ -294,6 +293,8 @@ Table of Contents
    service is making a request of another service within a larger
    application.  Even in this simple case the identity of the workload
    is often a composite of many attributes such as:
+
+   *  Trigger Information
 
    *  Service Name
 
@@ -316,7 +317,7 @@ Table of Contents
 
    *  authorizing access to APIs and resources
 
-   *  providing an audit train of requests within a system
+   *  providing an audit trail of requests within a system
 
    *  providing context for other decisions made within a service
 
@@ -324,8 +325,7 @@ Table of Contents
    Some of the most common include:
 
    *  TLS authentication of the server using X.509 certificates and
-      bearer token, encoded as JWTs, on top of HTTP or other protocol
-      request.
+      bearer token, encoded as JWTs.
 
    *  Mutual TLS authentication using X.509 certificate for both client
       and server.
@@ -454,9 +454,9 @@ Table of Contents
    [I-D.ietf-oauth-transaction-tokens]
               Tulshibagwale, A., Fletcher, G., and P. Kasselman,
               "Transaction Tokens", Work in Progress, Internet-Draft,
-              draft-ietf-oauth-transaction-tokens-00, 29 November 2023,
+              draft-ietf-oauth-transaction-tokens-01, 16 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              transaction-tokens-00>.
+              transaction-tokens-01>.
 
 Acknowledgments
 
