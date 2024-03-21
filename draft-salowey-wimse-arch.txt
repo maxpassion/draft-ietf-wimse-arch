@@ -5,9 +5,9 @@
 wimse                                                         J. Salowey
 Internet-Draft                                                    Venafi
 Intended status: Informational                              Y. Rosomakho
-Expires: 21 September 2024                                       Zscaler
+Expires: 22 September 2024                                       Zscaler
                                                            H. Tschofenig
-                                                           20 March 2024
+                                                           21 March 2024
 
 
   Workload Identity in a Multi System Environment (WIMSE) Architecture
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 September 2024.
+   This Internet-Draft will expire on 22 September 2024.
 
 Copyright Notice
 
@@ -136,38 +136,32 @@ Table of Contents
      +-----------------+
      |     Server      |
      |                 |
-     |                 |
      | +-------------+ |
      | | Attestation | |
      | +-------------+ |
-     +-----------------+
-              ^|
-              ||
-              ||
-              || Identity
-              || Information                   ..
-              ||                               ||
-              ||                               || Workload
-              ||                               ||    to
-              ||                               || Workload
-              ||                               || Communication
-     +--------||-------------------------------vv-----------+
-     |        |v                        +-----------------+ |
-     |  +---------------+              +-----------------+| |
-     |  | Agent         |              | Workload        || |
-     |  |               |              |                 || |
-     |  |              <...............>                 || |
-     |  |            ^  |  Identity    | ^               |+ |
-     |  +------------'--+  Information +-'---------------+  |
-     |               '                   '                  |
-     |               ' & Identity        ' Identity         |
-     |   Attestation ' Information       ' Information      |
-     |               v                   v                  |
-     |------------------------------------------------------|
+     +---------+-------+
+             ^ |                              . .
+             | | Identity                     | | Workload
+             | | Information                  | |    to
+             | |                              | | Workload
+             | |                              | | Communication
+     +-------+-+------------------------------+-+-----------+
+     |       | |                              v V           |
+     |       | v                         +----------------+ |
+     |  +----+----------+              +-+--------------+ | |
+     |  | Agent         |              | Workloads      | | |
+     |  |              <+--------------+>               | | |
+     |  |            ^  |  Identity    |  ^             +-+ |
+     |  +------------+--+  Information +--+-------------+   |
+     |               |                    |                 |
+     |               | & Identity         | Identity        |
+     |   Attestation | Information        | Information     |
+     |               v                    v                 |
+     +------------------------------------------------------+
      | Host Operating System and Hardware                   |
      +------------------------------------------------------+
 
-   Figure 1: Host Software Layinger in a Workload Identity Architecture.
+   Figure 1: Host Software Layering in a Workload Identity Architecture.
 
    Once the workload is started and has obtained identity information,
    it can offer its services.  Once a service is invoked on a workload

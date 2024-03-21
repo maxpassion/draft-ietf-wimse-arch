@@ -1032,7 +1032,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Salowey, et al.</td>
-<td class="center">Expires 21 September 2024</td>
+<td class="center">Expires 22 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1045,12 +1045,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-salowey-wimse-arch-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-03-20" class="published">20 March 2024</time>
+<time datetime="2024-03-21" class="published">21 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-09-21">21 September 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-22">22 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1103,7 +1103,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 21 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1229,47 +1229,83 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-3">This architecture considers two ways to express identity information: X.509 certificates embedded on TLS layer and JSON Web Tokens (JWTs) acting as bearer tokens at the application layer. Collectively, these are referred to as WIMSE tokens. The applicability of given token format depends on application and security context and will be explored in later sections.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4"><a href="#arch-fig" class="auto internal xref">Figure 1</a> shows the software layering at a host running workloads. As the workloads get started, they get their identity provisioned with the help of an agent. The agent is responsible for interacting with a server that ensures workloads in a set of hosts are managed conveniently and identity provisioned to workloads are associated with the expected authorization privileges. The server manages the lifecycle of the workloads with the help of the agent. The agent may also need to request attestation information about the hardware, lower layer software/firmware, and characteristics of the workload before the server identity information can be obtained.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">How the workload obtains identity information and interacts with the agent is subject to different implementations, as described in this document. A few variants (such as environment variables or domain sockets) have been used in deployments today.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<span id="name-host-software-layinger-in-a"></span><div id="arch-fig">
+<span id="name-host-software-layering-in-a"></span><div id="arch-fig">
 <figure id="figure-1">
-        <div class="alignLeft art-text artwork" id="section-1-6.1">
-<pre>
-  +-----------------+
-  |     Server      |
-  |                 |
-  |                 |
-  | +-------------+ |
-  | | Attestation | |
-  | +-------------+ |
-  +-----------------+
-           ^|
-           ||
-           ||
-           || Identity
-           || Information                   ..
-           ||                               ||
-           ||                               || Workload
-           ||                               ||    to
-           ||                               || Workload
-           ||                               || Communication
-  +--------||-------------------------------vv-----------+
-  |        |v                        +-----------------+ |
-  |  +---------------+              +-----------------+| |
-  |  | Agent         |              | Workload        || |
-  |  |               |              |                 || |
-  |  |              &lt;...............&gt;                 || |
-  |  |            ^  |  Identity    | ^               |+ |
-  |  +------------'--+  Information +-'---------------+  |
-  |               '                   '                  |
-  |               ' &amp; Identity        ' Identity         |
-  |   Attestation ' Information       ' Information      |
-  |               v                   v                  |
-  |------------------------------------------------------|
-  | Host Operating System and Hardware                   |
-  +------------------------------------------------------+
-</pre>
+        <div id="section-1-6.1">
+          <div class="alignLeft art-svg artwork" id="section-1-6.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="480" width="472" viewBox="0 0 472 480" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 8,32 L 8,128" fill="none" stroke="black"></path>
+              <path d="M 8,224 L 8,448" fill="none" stroke="black"></path>
+              <path d="M 24,80 L 24,112" fill="none" stroke="black"></path>
+              <path d="M 32,272 L 32,336" fill="none" stroke="black"></path>
+              <path d="M 72,136 L 72,272" fill="none" stroke="black"></path>
+              <path d="M 88,128 L 88,264" fill="none" stroke="black"></path>
+              <path d="M 136,80 L 136,112" fill="none" stroke="black"></path>
+              <path d="M 136,320 L 136,408" fill="none" stroke="black"></path>
+              <path d="M 152,32 L 152,128" fill="none" stroke="black"></path>
+              <path d="M 160,272 L 160,336" fill="none" stroke="black"></path>
+              <path d="M 280,272 L 280,336" fill="none" stroke="black"></path>
+              <path d="M 296,256 L 296,272" fill="none" stroke="black"></path>
+              <path d="M 304,320 L 304,408" fill="none" stroke="black"></path>
+              <path d="M 336,144 L 336,248" fill="none" stroke="black"></path>
+              <path d="M 352,144 L 352,248" fill="none" stroke="black"></path>
+              <path d="M 416,272 L 416,336" fill="none" stroke="black"></path>
+              <path d="M 432,256 L 432,320" fill="none" stroke="black"></path>
+              <path d="M 448,224 L 448,448" fill="none" stroke="black"></path>
+              <path d="M 8,32 L 152,32" fill="none" stroke="black"></path>
+              <path d="M 24,80 L 136,80" fill="none" stroke="black"></path>
+              <path d="M 24,112 L 136,112" fill="none" stroke="black"></path>
+              <path d="M 8,128 L 152,128" fill="none" stroke="black"></path>
+              <path d="M 8,224 L 448,224" fill="none" stroke="black"></path>
+              <path d="M 296,256 L 432,256" fill="none" stroke="black"></path>
+              <path d="M 32,272 L 160,272" fill="none" stroke="black"></path>
+              <path d="M 280,272 L 416,272" fill="none" stroke="black"></path>
+              <path d="M 152,304 L 288,304" fill="none" stroke="black"></path>
+              <path d="M 416,320 L 432,320" fill="none" stroke="black"></path>
+              <path d="M 32,336 L 160,336" fill="none" stroke="black"></path>
+              <path d="M 280,336 L 416,336" fill="none" stroke="black"></path>
+              <path d="M 8,416 L 448,416" fill="none" stroke="black"></path>
+              <path d="M 8,448 L 448,448" fill="none" stroke="black"></path>
+              <polygon class="arrowhead" points="360,248 348,242.4 348,253.6" fill="black" transform="rotate(90,352,248)"></polygon>
+              <polygon class="arrowhead" points="344,248 332,242.4 332,253.6" fill="black" transform="rotate(90,336,248)"></polygon>
+              <polygon class="arrowhead" points="312,408 300,402.4 300,413.6" fill="black" transform="rotate(90,304,408)"></polygon>
+              <polygon class="arrowhead" points="312,320 300,314.4 300,325.6" fill="black" transform="rotate(270,304,320)"></polygon>
+              <polygon class="arrowhead" points="296,304 284,298.4 284,309.6" fill="black" transform="rotate(0,288,304)"></polygon>
+              <polygon class="arrowhead" points="160,304 148,298.4 148,309.6" fill="black" transform="rotate(180,152,304)"></polygon>
+              <polygon class="arrowhead" points="144,408 132,402.4 132,413.6" fill="black" transform="rotate(90,136,408)"></polygon>
+              <polygon class="arrowhead" points="144,320 132,314.4 132,325.6" fill="black" transform="rotate(270,136,320)"></polygon>
+              <polygon class="arrowhead" points="96,264 84,258.4 84,269.6" fill="black" transform="rotate(90,88,264)"></polygon>
+              <polygon class="arrowhead" points="80,136 68,130.4 68,141.6" fill="black" transform="rotate(270,72,136)"></polygon>
+              <g class="text">
+                <text x="76" y="52">Server</text>
+                <text x="80" y="100">Attestation</text>
+                <text x="132" y="164">Identity</text>
+                <text x="396" y="164">Workload</text>
+                <text x="144" y="180">Information</text>
+                <text x="396" y="180">to</text>
+                <text x="396" y="196">Workload</text>
+                <text x="416" y="212">Communication</text>
+                <text x="64" y="292">Agent</text>
+                <text x="328" y="292">Workloads</text>
+                <text x="212" y="324">Identity</text>
+                <text x="224" y="340">Information</text>
+                <text x="152" y="372">&amp;</text>
+                <text x="196" y="372">Identity</text>
+                <text x="348" y="372">Identity</text>
+                <text x="80" y="388">Attestation</text>
+                <text x="192" y="388">Information</text>
+                <text x="360" y="388">Information</text>
+                <text x="36" y="436">Host</text>
+                <text x="96" y="436">Operating</text>
+                <text x="164" y="436">System</text>
+                <text x="208" y="436">and</text>
+                <text x="260" y="436">Hardware</text>
+              </g>
+            </svg><a href="#section-1-6.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-host-software-layinger-in-a" class="selfRef">Host Software Layinger in a Workload Identity Architecture.</a>
+<a href="#name-host-software-layering-in-a" class="selfRef">Host Software Layering in a Workload Identity Architecture.</a>
         </figcaption></figure>
 </div>
 <p id="section-1-7">Once the workload is started and has obtained identity information, it can offer its services. Once a service is invoked on a workload it may require interaction with other workloads. An example of such interaction is shown in <span>[<a href="#I-D.ietf-oauth-transaction-tokens" class="cite xref">I-D.ietf-oauth-transaction-tokens</a>]</span> where an externally-facing endpoint is invoked using conventional authorization mechanism, such as an OAuth 2.0 access token. The interaction with other workload may require the security context to be passed along the call chain.<a href="#section-1-7" class="pilcrow">¶</a></p>
