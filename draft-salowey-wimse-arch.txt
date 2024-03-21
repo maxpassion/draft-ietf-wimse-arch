@@ -75,17 +75,13 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Architecture
      3.1.  Workload Identity
-     3.2.  Server
-     3.3.  Agent
-     3.4.  Attestation
-     3.5.  Identity Credentials
-     3.6.  Basic Service Authentication
-     3.7.  Security Context Establishment and Propagation
-     3.8.  Delegation and Impersonation
-     3.9.  Asynchronous and Batch Requests
-     3.10. Cross-boundary Workload Identity
-       3.10.1.  Egress Identity Generalization
-       3.10.2.  Inbound Gateway Identity Validation
+       3.1.1.  Bootstrapping Workload Identity
+       3.1.2.  Identity Credentials
+     3.2.  Workload Identity Use Cases
+       3.2.1.  Security Context Establishment and Propagation
+       3.2.2.  Delegation and Impersonation
+       3.2.3.  Asynchronous and Batch Requests
+       3.2.4.  Cross-boundary Workload Identity
    4.  Security Considerations
      4.1.  Traffic Interception
      4.2.  Information Disclosure
@@ -170,9 +166,17 @@ Table of Contents
    explicit connection processing, such as an ingress gateway or a
    Content Delivery Network (CDN) service.
 
+   *  Attestation
+
+   Attestation is the function through which a task verifies the
+   identity of a separate Workload.  (TBD: sync definition with
+   reference RaTS architecture)
+
 3.  Architecture
 
 3.1.  Workload Identity
+
+3.1.1.  Bootstrapping Workload Identity
 
    A workload needs to obtain its identity early in its lifecycle.  This
    identity is sometimes referred to as the "bottom turtle" on which
@@ -190,9 +194,12 @@ Table of Contents
    the help of an agent.  The agent may be associated with one or more
    workloads to help ensure that workloads are provisioned with the
    correct identity.  The agent provides attestation evidence and other
-   relevant information to a server.  The server validates this
-   information and provides the agent with identity credentials for the
-   workloads it is associated with.
+   relevant information to a server.  After obtaining identity
+   credentials from the Server it passes them to the workload.  The
+   server validates this information and provides the agent with
+   identity credentials for the workloads it is associated with.  The
+   server can use a variety of internal and external means to validate
+   the request against policy.
 
      +-----------------+
      |     Server      |
@@ -239,59 +246,40 @@ Table of Contents
    *  Environment Variables - identity credential may also be injected
       into workloads using operating system environment variables.
 
-3.2.  Server
-
-   The Server issues workload identity credentials when requested by the
-   Agent.
-
-3.3.  Agent
-
-   The Agent performs the function of transmitting the initial workload
-   identity to the Server to obtain the workload identity credentials.
-   The Agent makes the workload identity credentials available to the
-   workload.
-
-3.4.  Attestation
-
-   Attestation is the function through which a task verifies the
-   identity of a separate Workload.
-
-   During Workload Attestation, the Server verifies the Agent
-   credentials, Workload Identity, and the permission of the Agent to
-   receive Credentials authenticating the Workload Identity.  The Server
-   can use a variety of means to verify that permission, including a
-   Policy decision based on the contents of a Workload Registration
-   database or requesting assistance from a trusted Identity Provider.
-
-3.5.  Identity Credentials
+3.1.2.  Identity Credentials
 
    The Agent provisions the identity credentials to the workload.  These
-   credentials are later used to obtain WIMSE tokens: JWT tokens and
-   X.509 certificates.
+   credentials are represented in form of JWT tokens and/or X.509
+   certificates.
 
-   JWT bearer tokens are tokens presented to another party as proof of
-   identity.  They are typically signed to prevent forgery, however
-   since these credentials are often not bound to other information its
-   possible that they could be stolen and reused elsewhere.  To reduce
-   some of these risks, bearer tokens may have short lifespans and may
-   be rotated often or converted to a bound approach such as binding to
-   a TLS session.
+   JWT bearer tokens are presented to another party as a proof of
+   identity.  They are signed to prevent forgery, however since these
+   credentials are often not bound to other information it is possible
+   that they could be stolen and reused elsewhere.  To reduce some of
+   these risks, bearer tokens may have a short lifespan.  Alternatively,
+   sender constrained tokens can be used such as TLS session binding.
 
-   X.509 certificate credentials consist of two parts, a public key
-   certificate that is a signed data structure that contains a public
-   key and identity information and a private key which.  The
-   certificate is sent during authentication, however the private key is
-   kept secret and only used in cryptographic computation to prove that
-   the presenter has access to the private key that corresponds to the
-   public key in the certificate.
+   X.509 certificate credentials consist of two parts:
 
-3.6.  Basic Service Authentication
+   *  a certificate is a signed data structure that contains a public
+      key and identity information
 
-   One of the most basic use cases for workload identity is for
-   authenticating one workload to another such as in the case where one
-   service is making a request of another service within a larger
-   application.  Even in this simple case the identity of the workload
-   is often a composite of many attributes such as:
+   *  a corresponding private key
+
+   The certificate is presented during authentication, however the
+   private key is kept secret and only used in cryptographic computation
+   to prove that the presenter has access to the private key that
+   corresponds to the public key in the certificate.
+
+3.2.  Workload Identity Use Cases
+
+   ### Basic Service Authentication
+
+   One of the most basic use cases for workload identity is
+   authentication of one workload to another, such as in the case where
+   one service is making a request to another service within a larger
+   application.  Even in this simple case the identity of a workload is
+   often composed of many attributes such as:
 
    *  Trigger Information
 
@@ -309,7 +297,7 @@ Table of Contents
 
    *  Hardware Attestation
 
-   These attributes are used for various purposes:
+   These attributes are used for various purposes such as:
 
    *  ensuring the request is made to the correct service or service
       instance
@@ -332,7 +320,7 @@ Table of Contents
    *  TLS authentication of the server and HTTP request signing using a
       secret key.
 
-3.7.  Security Context Establishment and Propagation
+3.2.1.  Security Context Establishment and Propagation
 
    In a typical system of workloads additional information is needed in
    order for the workload to perform its function.  For example, it is
@@ -348,44 +336,45 @@ Table of Contents
    only be used by an authorized workload and that the context
    information originated from an authorized workload.
 
-3.8.  Delegation and Impersonation
+3.2.2.  Delegation and Impersonation
 
    TBD.
 
-3.9.  Asynchronous and Batch Requests
+3.2.3.  Asynchronous and Batch Requests
 
    TBD.
 
-3.10.  Cross-boundary Workload Identity
+3.2.4.  Cross-boundary Workload Identity
 
-   As workloads often need to communicate across administrative
-   boundaries, extra care needs to be taken when it comes to identity
-   communication to ensure scalability and privacy.
+   As workloads often need to communicate across trust boundaries, extra
+   care needs to be taken when it comes to identity communication to
+   ensure scalability and privacy.  (TODO: align with OAuth cross domain
+   identity and authorization)
 
-3.10.1.  Egress Identity Generalization
+3.2.4.1.  Egress Identity Generalization
 
-   A workload communicating with a service, or another workload provided
-   by an external organization may need to provide more generic identity
+   A workload communicating with a service, or another workload located
+   outside the trust boundary may need to provide modified identity
    information.  Detailed identity of internal workload originating the
-   communication is relevant inside the administrative domain but could
-   be excessive for the outside world and expose internal topology
-   information that can be sensitive.
+   communication is relevant inside the trust boundary but could be
+   excessive for the outside world and expose potentially sensitive
+   internal topology information.
 
-   A security gateway at the edge of an administrative domain can be
-   used to validate identity information of the workload, perform
-   context specific authorization of the transaction and replace
-   workload specific identity with a generalized one for a given
-   administrative domain.
+   A security gateway at the edge of a trust boundary can be used to
+   validate identity information of the workload, perform context
+   specific authorization of the transaction and replace workload
+   specific identity with a generalized one for a given trust domain.
 
-3.10.2.  Inbound Gateway Identity Validation
+3.2.4.2.  Inbound Gateway Identity Validation
 
    Inbound security gateway is a common design pattern for service
    protection.  This functionality is often found in CDN services, API
    gateways, load balancers, Web Application Firewalls (WAFs) and other
-   security solutions.  Workload identity verification should be
-   performed as a part of these security services.  After validation of
-   workload identity, the gateway may either leave it unmodified or
-   replace it with its own identity to be validated by the destination.
+   security solutions.  Workload identity verification of inbound
+   requests should be performed as a part of these security services.
+   After validation of workload identity, the gateway may either leave
+   it unmodified or replace it with its own identity to be validated by
+   the destination.
 
 4.  Security Considerations
 
