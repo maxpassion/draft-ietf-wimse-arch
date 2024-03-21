@@ -188,10 +188,10 @@ Table of Contents
 
    Figure 1 provides an example of software layering at a host running
    workloads.  During startup, workloads bootstrap their identity with
-   the help of an agent.  The agent may be assocaited with one or more
+   the help of an agent.  The agent may be associated with one or more
    workloads to help ensure that workloads are provisioned with the
-   correct identity.  The agent provides credentials, attestations,
-   evidence and other information to a service which validates this
+   correct identity.  The agent provides credentials, attestation
+   evidence and other information to a server, which validates this
    information and provides the agent with correct identity credentials
    for the workloads it is associated with.
 
