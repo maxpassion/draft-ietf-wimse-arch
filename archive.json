@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-19T01:16:31.193498+00:00",
+  "timestamp": "2024-03-21T01:17:16.935498+00:00",
   "repo": "jsalowey/wimse-arch",
   "labels": [
     {
@@ -190,7 +190,63 @@
       "labels": [],
       "body": "Should we distinguish between information disclosure (attacker learns information it should not have) vs attacker obtains control of a credential that it can use to impersonate a workload, perform lateral moves or elevate privelage.",
       "createdAt": "2024-03-18T00:26:30Z",
-      "updatedAt": "2024-03-18T00:26:30Z",
+      "updatedAt": "2024-03-20T11:21:41Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "body": "I think so.  There is an intersection between lateral movement capability and information disclosure, but they are not the same thing and its probably imprortant to differentiate the different outcomes. ",
+          "createdAt": "2024-03-20T11:21:40Z",
+          "updatedAt": "2024-03-20T11:21:40Z"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "I_kwDOLPTb0M6DDjnm",
+      "title": "Add attestation process diagram",
+      "url": "https://github.com/jsalowey/wimse-arch/issues/23",
+      "state": "OPEN",
+      "author": "yaroslavros",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We should add graphical representation of attestation process to simplify reader understanding",
+      "createdAt": "2024-03-20T23:03:33Z",
+      "updatedAt": "2024-03-20T23:03:33Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOLPTb0M6DDj8X",
+      "title": "RATS terminology for attestation process",
+      "url": "https://github.com/jsalowey/wimse-arch/issues/24",
+      "state": "OPEN",
+      "author": "yaroslavros",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Lets use consistent terminology with RATS or at least refer to RATS terminology where applicable",
+      "createdAt": "2024-03-20T23:04:59Z",
+      "updatedAt": "2024-03-20T23:04:59Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOLPTb0M6DDkQ7",
+      "title": "Clarify types and usage of context",
+      "url": "https://github.com/jsalowey/wimse-arch/issues/25",
+      "state": "OPEN",
+      "author": "yaroslavros",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There are various types of context that should be mentioned in relevant locations of the document. We also need to make context as a relevant part of the flow",
+      "createdAt": "2024-03-20T23:06:05Z",
+      "updatedAt": "2024-03-20T23:06:05Z",
       "closedAt": null,
       "comments": []
     }
@@ -738,6 +794,34 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 22,
+      "id": "PR_kwDOLPTb0M5qPdH9",
+      "title": "Misc changes before WG adoption call.",
+      "url": "https://github.com/jsalowey/wimse-arch/pull/22",
+      "state": "MERGED",
+      "author": "yaroslavros",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "For the discussion tomorrow morning",
+      "createdAt": "2024-03-20T15:55:47Z",
+      "updatedAt": "2024-03-20T23:01:31Z",
+      "baseRepository": "jsalowey/wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "20b342db71d977df6a02a45f54b89c0c75a1feb5",
+      "headRepository": "yaroslavros/wimse-arch",
+      "headRefName": "main",
+      "headRefOid": "d61cd6e662f30ba5c7768b7e56f2ed7da41a8f53",
+      "closedAt": "2024-03-20T23:01:31Z",
+      "mergedAt": "2024-03-20T23:01:31Z",
+      "mergedBy": "yaroslavros",
+      "mergeCommit": {
+        "oid": "6a6ca0d5bafd92126937dd8138c9188c210a6d63"
+      },
       "comments": [],
       "reviews": []
     }
