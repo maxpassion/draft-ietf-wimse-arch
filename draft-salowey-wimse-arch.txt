@@ -107,9 +107,10 @@ Table of Contents
 
    Workloads need to be provisioned with an identity when they are
    started.  Often, additional information needs to be provided, such as
-   trust anchors and security context details.  In the call chain some
-   of this context information may be removed or generalized depending
-   on application needs.
+   trust anchors and security context details.  Workload identity
+   credential is used to authenticate communications between workloads.
+   Workloads make use of identity information and additional context
+   information to perform authentication and authorization.
 
    This architecture considers two ways to express identity information:
    X.509 certificates often used in the TLS layer and JSON Web Tokens
@@ -119,7 +120,7 @@ Table of Contents
    later sections.
 
    Once the workload is started and has obtained identity information,
-   it can offer its services.  Once a service is invoked on a workload
+   it can start performing its functions.  Once the workload is invoked
    it may require interaction with other workloads.  An example of such
    interaction is shown in [I-D.ietf-oauth-transaction-tokens] where an
    externally-facing endpoint is invoked using conventional
