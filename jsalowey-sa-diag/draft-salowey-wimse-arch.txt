@@ -78,7 +78,7 @@ Table of Contents
        3.1.1.  Bootstrapping Workload Identity
        3.1.2.  Identity Credentials
      3.2.  Workload Identity Use Cases
-       3.2.1.  Basic Service Authentication
+       3.2.1.  Basic Service Authentication and Authorization
        3.2.2.  Security Context Establishment and Propagation
        3.2.3.  Delegation and Impersonation
        3.2.4.  Asynchronous and Batch Requests
@@ -274,12 +274,14 @@ Table of Contents
 
 3.2.  Workload Identity Use Cases
 
-3.2.1.  Basic Service Authentication
+3.2.1.  Basic Service Authentication and Authorization
 
    One of the most basic use cases for workload identity is
    authentication of one workload to another, such as in the case where
-   one service is making a request to another service within a larger
-   application.  Even in this simple case the identity of a workload is
+   one service is making a request to another service as part of a
+   larger, more complex application.  Following authentication, the
+   request to the service offered by the workload it needs to be
+   authorized.  Even in this simple case the identity of a workload is
    often composed of many attributes such as:
 
    *  Trigger Information
@@ -321,6 +323,14 @@ Table of Contents
    *  TLS authentication of the server and HTTP request signing using a
       secret key.
 
+   Figure 2 illustrates the communication between different workloads.
+   Two aspects are important to highlight: First, there is a need to
+   consider the interaction with workloads that are external to the
+   trust domain (sometimes called cross-domain).  Second, the
+   interaction does not only occur between workloads that directly
+   interact with each other but instead may also take place across
+   intermediate workloads (in an end-to-end style).
+
      +-----------------+
      |     Workload    |
      |    (external)   |
@@ -328,18 +338,22 @@ Table of Contents
      +-------+---------+
              |
              |
-     +-------+-------------------------Trust Boundary-------+
-     |       |                                              |
-     |       |                                              |
-     |  +----+----------+              +----------------+   |
-     |  |    v          |              |                |   |
-     |  | Workload      |              | Workload       |   |
-     |  |              <+--------------+>               |   |
-     |  |               |              |                |   |
-     |  +---------------+              +----------------+   |
-     |                                                      |
-     |                                                      |
-     +------------------------------------------------------+
+     +-------+-------------------------Trust Boundary---------------+
+     |       |                                                      |
+     |       |                                                      |
+     |  +----+------+ Hop-by-  +-----------+ Hop-by-  +-----------+ |
+     |  |    v      | Hop      |           | Hop      |           | |
+     |  | Workload  | Security | Workload  | Security | Workload  | |
+     |  |          <+----------+>         <+----------+>          | |
+     |  |           |          |           |          |           | |
+     |  |           |          |           |          |           | |
+     |  |    O<-----+----------+-----------+----------+---->O     | |
+     |  +-----------+   E2E    +-----------+   E2E    +-----------+ |
+     |                                                              |
+     |                                                              |
+     +--------------------------------------------------------------+
+
+               Figure 2: Workload-to-Workload Communication.
 
 3.2.2.  Security Context Establishment and Propagation
 
