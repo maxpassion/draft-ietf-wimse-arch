@@ -1156,16 +1156,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-workload-identity-use-cases" class="internal xref">Workload Identity Use Cases</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
-                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-security-context-establishm" class="internal xref">Security Context Establishment and Propagation</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-basic-service-authenticatio" class="internal xref">Basic Service Authentication</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
-                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-delegation-and-impersonatio" class="internal xref">Delegation and Impersonation</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-security-context-establishm" class="internal xref">Security Context Establishment and Propagation</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.3">
-                    <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-asynchronous-and-batch-requ" class="internal xref">Asynchronous and Batch Requests</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.3.1"><a href="#section-3.2.3" class="auto internal xref">3.2.3</a>.  <a href="#name-delegation-and-impersonatio" class="internal xref">Delegation and Impersonation</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.4">
-                    <p id="section-toc.1-1.3.2.2.2.4.1"><a href="#section-3.2.4" class="auto internal xref">3.2.4</a>.  <a href="#name-cross-boundary-workload-ide" class="internal xref">Cross-boundary Workload Identity</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.4.1"><a href="#section-3.2.4" class="auto internal xref">3.2.4</a>.  <a href="#name-asynchronous-and-batch-requ" class="internal xref">Asynchronous and Batch Requests</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.5">
+                    <p id="section-toc.1-1.3.2.2.2.5.1"><a href="#section-3.2.5" class="auto internal xref">3.2.5</a>.  <a href="#name-cross-boundary-workload-ide" class="internal xref">Cross-boundary Workload Identity</a></p>
 </li>
                 </ul>
 </li>
@@ -1391,143 +1394,149 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-workload-identity-use-cases">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-workload-identity-use-cases" class="section-name selfRef">Workload Identity Use Cases</a>
         </h3>
-<p id="section-3.2-1">### Basic Service Authentication<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2">One of the most basic use cases for workload identity is authentication of one workload to another, such as in the case where one service is making a request to another service within a larger application. Even in this simple case the identity of a workload is often composed of many attributes such as:<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<div id="basic-service-authentication">
+<section id="section-3.2.1">
+          <h4 id="name-basic-service-authenticatio">
+<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-basic-service-authenticatio" class="section-name selfRef">Basic Service Authentication</a>
+          </h4>
+<p id="section-3.2.1-1">One of the most basic use cases for workload identity is authentication of one workload to another, such as in the case where one service is making a request to another service within a larger application. Even in this simple case the identity of a workload is often composed of many attributes such as:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.2-3.1">
-            <p id="section-3.2-3.1.1">Trigger Information<a href="#section-3.2-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.2.1-2.1">
+              <p id="section-3.2.1-2.1.1">Trigger Information<a href="#section-3.2.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-3.2">
-            <p id="section-3.2-3.2.1">Service Name<a href="#section-3.2-3.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-2.2">
+              <p id="section-3.2.1-2.2.1">Service Name<a href="#section-3.2.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-3.3">
-            <p id="section-3.2-3.3.1">Instance Name<a href="#section-3.2-3.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-2.3">
+              <p id="section-3.2.1-2.3.1">Instance Name<a href="#section-3.2.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-3.4">
-            <p id="section-3.2-3.4.1">Role<a href="#section-3.2-3.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-2.4">
+              <p id="section-3.2.1-2.4.1">Role<a href="#section-3.2.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-3.5">
-            <p id="section-3.2-3.5.1">Environment<a href="#section-3.2-3.5.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-2.5">
+              <p id="section-3.2.1-2.5.1">Environment<a href="#section-3.2.1-2.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-3.6">
-            <p id="section-3.2-3.6.1">Trust Domain<a href="#section-3.2-3.6.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-2.6">
+              <p id="section-3.2.1-2.6.1">Trust Domain<a href="#section-3.2.1-2.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-3.7">
-            <p id="section-3.2-3.7.1">Software Attestation<a href="#section-3.2-3.7.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-2.7">
+              <p id="section-3.2.1-2.7.1">Software Attestation<a href="#section-3.2.1-2.7.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-3.8">
-            <p id="section-3.2-3.8.1">Hardware Attestation<a href="#section-3.2-3.8.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-2.8">
+              <p id="section-3.2.1-2.8.1">Hardware Attestation<a href="#section-3.2.1-2.8.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-3.2-4">These attributes are used for various purposes such as:<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+          </ul>
+<p id="section-3.2.1-3">These attributes are used for various purposes such as:<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.2-5.1">
-            <p id="section-3.2-5.1.1">ensuring the request is made to the correct service or service instance<a href="#section-3.2-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.2.1-4.1">
+              <p id="section-3.2.1-4.1.1">ensuring the request is made to the correct service or service instance<a href="#section-3.2.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-5.2">
-            <p id="section-3.2-5.2.1">authorizing access to APIs and resources<a href="#section-3.2-5.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-4.2">
+              <p id="section-3.2.1-4.2.1">authorizing access to APIs and resources<a href="#section-3.2.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-5.3">
-            <p id="section-3.2-5.3.1">providing an audit trail of requests within a system<a href="#section-3.2-5.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-4.3">
+              <p id="section-3.2.1-4.3.1">providing an audit trail of requests within a system<a href="#section-3.2.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-5.4">
-            <p id="section-3.2-5.4.1">providing context for other decisions made within a service<a href="#section-3.2-5.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-4.4">
+              <p id="section-3.2.1-4.4.1">providing context for other decisions made within a service<a href="#section-3.2.1-4.4.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-3.2-6">There are several methods defined to perform this authentication.  Some of the most common include:<a href="#section-3.2-6" class="pilcrow">¶</a></p>
+          </ul>
+<p id="section-3.2.1-5">There are several methods defined to perform this authentication.  Some of the most common include:<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.2-7.1">
-            <p id="section-3.2-7.1.1">TLS authentication of the server using X.509 certificates and bearer token, encoded as JWTs.<a href="#section-3.2-7.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.2.1-6.1">
+              <p id="section-3.2.1-6.1.1">TLS authentication of the server using X.509 certificates and bearer token, encoded as JWTs.<a href="#section-3.2.1-6.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-7.2">
-            <p id="section-3.2-7.2.1">Mutual TLS authentication using X.509 certificate for both client and server.<a href="#section-3.2-7.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-6.2">
+              <p id="section-3.2.1-6.2.1">Mutual TLS authentication using X.509 certificate for both client and server.<a href="#section-3.2.1-6.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-7.3">
-            <p id="section-3.2-7.3.1">TLS authentication of the server and HTTP request signing using a secret key.<a href="#section-3.2-7.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-3.2.1-6.3">
+              <p id="section-3.2.1-6.3.1">TLS authentication of the server and HTTP request signing using a secret key.<a href="#section-3.2.1-6.3.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<div id="section-3.2-8">
-          <div class="alignLeft art-svg artwork" id="section-3.2-8.1">
+          </ul>
+<div id="section-3.2.1-7">
+            <div class="alignLeft art-svg artwork" id="section-3.2.1-7.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="456" viewBox="0 0 456 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-              <path d="M 8,32 L 8,96" fill="none" stroke="black"></path>
-              <path d="M 8,144 L 8,320" fill="none" stroke="black"></path>
-              <path d="M 32,192 L 32,272" fill="none" stroke="black"></path>
-              <path d="M 72,80 L 72,208" fill="none" stroke="black"></path>
-              <path d="M 152,32 L 152,96" fill="none" stroke="black"></path>
-              <path d="M 160,192 L 160,272" fill="none" stroke="black"></path>
-              <path d="M 280,192 L 280,272" fill="none" stroke="black"></path>
-              <path d="M 416,192 L 416,272" fill="none" stroke="black"></path>
-              <path d="M 448,144 L 448,320" fill="none" stroke="black"></path>
-              <path d="M 8,32 L 152,32" fill="none" stroke="black"></path>
-              <path d="M 8,96 L 152,96" fill="none" stroke="black"></path>
-              <path d="M 8,144 L 272,144" fill="none" stroke="black"></path>
-              <path d="M 392,144 L 448,144" fill="none" stroke="black"></path>
-              <path d="M 32,192 L 160,192" fill="none" stroke="black"></path>
-              <path d="M 280,192 L 416,192" fill="none" stroke="black"></path>
-              <path d="M 152,240 L 288,240" fill="none" stroke="black"></path>
-              <path d="M 32,272 L 160,272" fill="none" stroke="black"></path>
-              <path d="M 280,272 L 416,272" fill="none" stroke="black"></path>
-              <path d="M 8,320 L 448,320" fill="none" stroke="black"></path>
-              <polygon class="arrowhead" points="296,240 284,234.4 284,245.6" fill="black" transform="rotate(0,288,240)"></polygon>
-              <polygon class="arrowhead" points="160,240 148,234.4 148,245.6" fill="black" transform="rotate(180,152,240)"></polygon>
-              <polygon class="arrowhead" points="80,208 68,202.4 68,213.6" fill="black" transform="rotate(90,72,208)"></polygon>
-              <polygon class="arrowhead" points="80,80 68,74.4 68,85.6" fill="black" transform="rotate(270,72,80)"></polygon>
-              <g class="text">
-                <text x="84" y="52">Workload</text>
-                <text x="84" y="68">(external)</text>
-                <text x="296" y="148">Trust</text>
-                <text x="356" y="148">Boundary</text>
-                <text x="76" y="228">Workload</text>
-                <text x="324" y="228">Workload</text>
-              </g>
-            </svg><a href="#section-3.2-8.1" class="pilcrow">¶</a>
+                <path d="M 8,32 L 8,96" fill="none" stroke="black"></path>
+                <path d="M 8,144 L 8,320" fill="none" stroke="black"></path>
+                <path d="M 32,192 L 32,272" fill="none" stroke="black"></path>
+                <path d="M 72,80 L 72,208" fill="none" stroke="black"></path>
+                <path d="M 152,32 L 152,96" fill="none" stroke="black"></path>
+                <path d="M 160,192 L 160,272" fill="none" stroke="black"></path>
+                <path d="M 280,192 L 280,272" fill="none" stroke="black"></path>
+                <path d="M 416,192 L 416,272" fill="none" stroke="black"></path>
+                <path d="M 448,144 L 448,320" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 152,32" fill="none" stroke="black"></path>
+                <path d="M 8,96 L 152,96" fill="none" stroke="black"></path>
+                <path d="M 8,144 L 272,144" fill="none" stroke="black"></path>
+                <path d="M 392,144 L 448,144" fill="none" stroke="black"></path>
+                <path d="M 32,192 L 160,192" fill="none" stroke="black"></path>
+                <path d="M 280,192 L 416,192" fill="none" stroke="black"></path>
+                <path d="M 152,240 L 288,240" fill="none" stroke="black"></path>
+                <path d="M 32,272 L 160,272" fill="none" stroke="black"></path>
+                <path d="M 280,272 L 416,272" fill="none" stroke="black"></path>
+                <path d="M 8,320 L 448,320" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="296,240 284,234.4 284,245.6" fill="black" transform="rotate(0,288,240)"></polygon>
+                <polygon class="arrowhead" points="160,240 148,234.4 148,245.6" fill="black" transform="rotate(180,152,240)"></polygon>
+                <polygon class="arrowhead" points="80,208 68,202.4 68,213.6" fill="black" transform="rotate(90,72,208)"></polygon>
+                <polygon class="arrowhead" points="80,80 68,74.4 68,85.6" fill="black" transform="rotate(270,72,80)"></polygon>
+                <g class="text">
+                  <text x="84" y="52">Workload</text>
+                  <text x="84" y="68">(external)</text>
+                  <text x="296" y="148">Trust</text>
+                  <text x="356" y="148">Boundary</text>
+                  <text x="76" y="228">Workload</text>
+                  <text x="324" y="228">Workload</text>
+                </g>
+              </svg><a href="#section-3.2.1-7.1" class="pilcrow">¶</a>
 </div>
+</div>
+</section>
 </div>
 <div id="security-context-establishment-and-propagation">
-<section id="section-3.2.1">
+<section id="section-3.2.2">
           <h4 id="name-security-context-establishm">
-<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-security-context-establishm" class="section-name selfRef">Security Context Establishment and Propagation</a>
+<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-security-context-establishm" class="section-name selfRef">Security Context Establishment and Propagation</a>
           </h4>
-<p id="section-3.2.1-1">In a typical system of workloads additional information is needed in order for the workload to perform its function. For example, it is common for a workload to require information about a user or other entity that originated the request. Other types of information may include information about the hardware or software that the workload is running or information about what processing and validation has already been done to the request. This type of information is part of the security context that the workload uses during authorization, accounting and auditing. This context is propagated and possibly augmented from workload to workload using tokens. Workload identity comes into play to ensure that the information in the context can only be used by an authorized workload and that the context information originated from an authorized workload.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-1">In a typical system of workloads additional information is needed in order for the workload to perform its function. For example, it is common for a workload to require information about a user or other entity that originated the request. Other types of information may include information about the hardware or software that the workload is running or information about what processing and validation has already been done to the request. This type of information is part of the security context that the workload uses during authorization, accounting and auditing. This context is propagated and possibly augmented from workload to workload using tokens. Workload identity comes into play to ensure that the information in the context can only be used by an authorized workload and that the context information originated from an authorized workload.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="delegation-and-impersonation">
-<section id="section-3.2.2">
-          <h4 id="name-delegation-and-impersonatio">
-<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-delegation-and-impersonatio" class="section-name selfRef">Delegation and Impersonation</a>
-          </h4>
-<p id="section-3.2.2-1">TBD.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="asynchronous-and-batch-requests">
 <section id="section-3.2.3">
-          <h4 id="name-asynchronous-and-batch-requ">
-<a href="#section-3.2.3" class="section-number selfRef">3.2.3. </a><a href="#name-asynchronous-and-batch-requ" class="section-name selfRef">Asynchronous and Batch Requests</a>
+          <h4 id="name-delegation-and-impersonatio">
+<a href="#section-3.2.3" class="section-number selfRef">3.2.3. </a><a href="#name-delegation-and-impersonatio" class="section-name selfRef">Delegation and Impersonation</a>
           </h4>
 <p id="section-3.2.3-1">TBD.<a href="#section-3.2.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="cross-boundary-workload-identity">
+<div id="asynchronous-and-batch-requests">
 <section id="section-3.2.4">
-          <h4 id="name-cross-boundary-workload-ide">
-<a href="#section-3.2.4" class="section-number selfRef">3.2.4. </a><a href="#name-cross-boundary-workload-ide" class="section-name selfRef">Cross-boundary Workload Identity</a>
+          <h4 id="name-asynchronous-and-batch-requ">
+<a href="#section-3.2.4" class="section-number selfRef">3.2.4. </a><a href="#name-asynchronous-and-batch-requ" class="section-name selfRef">Asynchronous and Batch Requests</a>
           </h4>
-<p id="section-3.2.4-1">As workloads often need to communicate across trust boundaries, extra care needs to be taken when it comes to identity communication to ensure scalability and privacy. (TODO: align with OAuth cross domain identity and authorization)<a href="#section-3.2.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.4-1">TBD.<a href="#section-3.2.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="cross-boundary-workload-identity">
+<section id="section-3.2.5">
+          <h4 id="name-cross-boundary-workload-ide">
+<a href="#section-3.2.5" class="section-number selfRef">3.2.5. </a><a href="#name-cross-boundary-workload-ide" class="section-name selfRef">Cross-boundary Workload Identity</a>
+          </h4>
+<p id="section-3.2.5-1">As workloads often need to communicate across trust boundaries, extra care needs to be taken when it comes to identity communication to ensure scalability and privacy. (TODO: align with OAuth cross domain identity and authorization)<a href="#section-3.2.5-1" class="pilcrow">¶</a></p>
 <div id="egress-identity-generalization">
-<section id="section-3.2.4.1">
+<section id="section-3.2.5.1">
             <h5 id="name-egress-identity-generalizat">
-<a href="#section-3.2.4.1" class="section-number selfRef">3.2.4.1. </a><a href="#name-egress-identity-generalizat" class="section-name selfRef">Egress Identity Generalization</a>
+<a href="#section-3.2.5.1" class="section-number selfRef">3.2.5.1. </a><a href="#name-egress-identity-generalizat" class="section-name selfRef">Egress Identity Generalization</a>
             </h5>
-<p id="section-3.2.4.1-1">A workload communicating with a service, or another workload located outside the trust boundary may need to provide modified identity information. Detailed identity of internal workload originating the communication is relevant inside the trust boundary but could be excessive for the outside world and expose potentially sensitive internal topology information.<a href="#section-3.2.4.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.2.4.1-2">A security gateway at the edge of a trust boundary can be used to validate identity information of the workload, perform context specific authorization of the transaction and replace workload specific identity with a generalized one for a given trust domain.<a href="#section-3.2.4.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.2.5.1-1">A workload communicating with a service, or another workload located outside the trust boundary may need to provide modified identity information. Detailed identity of internal workload originating the communication is relevant inside the trust boundary but could be excessive for the outside world and expose potentially sensitive internal topology information.<a href="#section-3.2.5.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.5.1-2">A security gateway at the edge of a trust boundary can be used to validate identity information of the workload, perform context specific authorization of the transaction and replace workload specific identity with a generalized one for a given trust domain.<a href="#section-3.2.5.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="inbound-gateway-identity-validation">
-<section id="section-3.2.4.2">
+<section id="section-3.2.5.2">
             <h5 id="name-inbound-gateway-identity-va">
-<a href="#section-3.2.4.2" class="section-number selfRef">3.2.4.2. </a><a href="#name-inbound-gateway-identity-va" class="section-name selfRef">Inbound Gateway Identity Validation</a>
+<a href="#section-3.2.5.2" class="section-number selfRef">3.2.5.2. </a><a href="#name-inbound-gateway-identity-va" class="section-name selfRef">Inbound Gateway Identity Validation</a>
             </h5>
-<p id="section-3.2.4.2-1">Inbound security gateway is a common design pattern for service protection. This functionality is often found in CDN services, API gateways, load balancers, Web Application Firewalls (WAFs) and other security solutions. Workload identity verification of inbound requests should be performed as a part of these security services. After validation of workload identity, the gateway may either leave it unmodified or replace it with its own identity to be validated by the destination.<a href="#section-3.2.4.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.5.2-1">Inbound security gateway is a common design pattern for service protection. This functionality is often found in CDN services, API gateways, load balancers, Web Application Firewalls (WAFs) and other security solutions. Workload identity verification of inbound requests should be performed as a part of these security services. After validation of workload identity, the gateway may either leave it unmodified or replace it with its own identity to be validated by the destination.<a href="#section-3.2.5.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
