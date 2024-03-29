@@ -1444,31 +1444,45 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </li>
           <li class="normal" id="section-3.2-7.3">
             <p id="section-3.2-7.3.1">TLS authentication of the server and HTTP request signing using a secret key.<a href="#section-3.2-7.3.1" class="pilcrow">¶</a></p>
-<p id="section-3.2-7.3.2">
-~~~aasvg<a href="#section-3.2-7.3.2" class="pilcrow">¶</a></p>
-<p id="section-3.2-7.3.3">
-+-----------------+
-|     Workload    |
-|    (external)   |
-|       ^         |
-+-------+---------+
-        |
-        |
-+-------+-------------------------Trust Boundary-------+
-|       |                                              |
-|       |                                              |
-|  +----+----------+              +----------------+   |
-|  |    v          |              |                |   |
-|  | Workload      |              | Workload       |   |
-|  |              &lt;+--------------+&gt;               |   |
-|  |               |              |                |   |
-|  +---------------+              +----------------+   |
-|                                                      |
-|                                                      |
-+------------------------------------------------------+<a href="#section-3.2-7.3.3" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.2-8">~~~~<a href="#section-3.2-8" class="pilcrow">¶</a></p>
+<div id="section-3.2-8">
+          <div class="alignLeft art-svg artwork" id="section-3.2-8.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="456" viewBox="0 0 456 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 8,32 L 8,96" fill="none" stroke="black"></path>
+              <path d="M 8,144 L 8,320" fill="none" stroke="black"></path>
+              <path d="M 32,192 L 32,272" fill="none" stroke="black"></path>
+              <path d="M 72,80 L 72,208" fill="none" stroke="black"></path>
+              <path d="M 152,32 L 152,96" fill="none" stroke="black"></path>
+              <path d="M 160,192 L 160,272" fill="none" stroke="black"></path>
+              <path d="M 280,192 L 280,272" fill="none" stroke="black"></path>
+              <path d="M 416,192 L 416,272" fill="none" stroke="black"></path>
+              <path d="M 448,144 L 448,320" fill="none" stroke="black"></path>
+              <path d="M 8,32 L 152,32" fill="none" stroke="black"></path>
+              <path d="M 8,96 L 152,96" fill="none" stroke="black"></path>
+              <path d="M 8,144 L 272,144" fill="none" stroke="black"></path>
+              <path d="M 392,144 L 448,144" fill="none" stroke="black"></path>
+              <path d="M 32,192 L 160,192" fill="none" stroke="black"></path>
+              <path d="M 280,192 L 416,192" fill="none" stroke="black"></path>
+              <path d="M 152,240 L 288,240" fill="none" stroke="black"></path>
+              <path d="M 32,272 L 160,272" fill="none" stroke="black"></path>
+              <path d="M 280,272 L 416,272" fill="none" stroke="black"></path>
+              <path d="M 8,320 L 448,320" fill="none" stroke="black"></path>
+              <polygon class="arrowhead" points="296,240 284,234.4 284,245.6" fill="black" transform="rotate(0,288,240)"></polygon>
+              <polygon class="arrowhead" points="160,240 148,234.4 148,245.6" fill="black" transform="rotate(180,152,240)"></polygon>
+              <polygon class="arrowhead" points="80,208 68,202.4 68,213.6" fill="black" transform="rotate(90,72,208)"></polygon>
+              <polygon class="arrowhead" points="80,80 68,74.4 68,85.6" fill="black" transform="rotate(270,72,80)"></polygon>
+              <g class="text">
+                <text x="84" y="52">Workload</text>
+                <text x="84" y="68">(external)</text>
+                <text x="296" y="148">Trust</text>
+                <text x="356" y="148">Boundary</text>
+                <text x="76" y="228">Workload</text>
+                <text x="324" y="228">Workload</text>
+              </g>
+            </svg><a href="#section-3.2-8.1" class="pilcrow">¶</a>
+</div>
+</div>
 <div id="security-context-establishment-and-propagation">
 <section id="section-3.2.1">
           <h4 id="name-security-context-establishm">
