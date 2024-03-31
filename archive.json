@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-28T01:16:34.968229+00:00",
+  "timestamp": "2024-03-31T01:23:22.974853+00:00",
   "repo": "jsalowey/wimse-arch",
   "labels": [
     {
@@ -885,6 +885,134 @@
           "body": "",
           "createdAt": "2024-03-21T05:38:29Z",
           "updatedAt": "2024-03-21T05:38:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOLPTb0M5rIMIK",
+      "title": "Tighten up abstract",
+      "url": "https://github.com/jsalowey/wimse-arch/pull/27",
+      "state": "MERGED",
+      "author": "jsalowey",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-29T04:02:54Z",
+      "updatedAt": "2024-03-29T17:25:25Z",
+      "baseRepository": "jsalowey/wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "a0e69460f6d2269befe20787a7df5c33e82cc9d8",
+      "headRepository": "jsalowey/wimse-arch",
+      "headRefName": "jsalowey-abstract",
+      "headRefOid": "5c5066ff523301553a4ad8f28deb4b5c293d6dde",
+      "closedAt": "2024-03-29T17:25:25Z",
+      "mergedAt": "2024-03-29T17:25:25Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "86b02e7c717349db48b55aefb56e6904d1297b81"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPTb0M51VLE-",
+          "commit": {
+            "abbreviatedOid": "5c5066f"
+          },
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-03-29T13:02:11Z",
+          "updatedAt": "2024-03-29T13:02:11Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "PR_kwDOLPTb0M5rIRwn",
+      "title": "Update service auth diagram",
+      "url": "https://github.com/jsalowey/wimse-arch/pull/28",
+      "state": "MERGED",
+      "author": "jsalowey",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-29T04:38:36Z",
+      "updatedAt": "2024-03-29T17:26:14Z",
+      "baseRepository": "jsalowey/wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "a0e69460f6d2269befe20787a7df5c33e82cc9d8",
+      "headRepository": "jsalowey/wimse-arch",
+      "headRefName": "jsalowey-sa-diag",
+      "headRefOid": "d7e7accd5502302e7d99bc72a79419d2591ad869",
+      "closedAt": "2024-03-29T17:26:14Z",
+      "mergedAt": "2024-03-29T17:26:14Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "a3843f1b5199511a5645b0fc37447f1b2aff566b"
+      },
+      "comments": [
+        {
+          "author": "hannestschofenig",
+          "authorAssociation": "COLLABORATOR",
+          "body": "See my update to the diagram in https://github.com/jsalowey/wimse-arch/pull/29",
+          "createdAt": "2024-03-29T13:21:21Z",
+          "updatedAt": "2024-03-29T13:21:21Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOLPTb0M5rKprG",
+      "title": "Updated Figure",
+      "url": "https://github.com/jsalowey/wimse-arch/pull/29",
+      "state": "MERGED",
+      "author": "hannestschofenig",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Updated figure in #28 ",
+      "createdAt": "2024-03-29T13:20:59Z",
+      "updatedAt": "2024-03-29T17:24:52Z",
+      "baseRepository": "jsalowey/wimse-arch",
+      "baseRefName": "jsalowey-sa-diag",
+      "baseRefOid": "eed5155c63ccbca449f101c871ca0c2c0d22235e",
+      "headRepository": "jsalowey/wimse-arch",
+      "headRefName": "hannestschofenig-patch-2",
+      "headRefOid": "bdc78d479687ace4689949a943964573ece9e829",
+      "closedAt": "2024-03-29T17:24:52Z",
+      "mergedAt": "2024-03-29T17:24:52Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "d7e7accd5502302e7d99bc72a79419d2591ad869"
+      },
+      "comments": [
+        {
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "body": "@hannestschofenig I made a slight update to remove the word authentication in the text since authentication is one specific type of interaction, there may be many others.  This might also be a good place to introduce \"context\" that is propagated (although that seems to be more a topic of the next section ",
+          "createdAt": "2024-03-29T17:24:49Z",
+          "updatedAt": "2024-03-29T17:24:49Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLPTb0M51Xlly",
+          "commit": {
+            "abbreviatedOid": "bdc78d4"
+          },
+          "author": "jsalowey",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-29T17:22:07Z",
+          "updatedAt": "2024-03-29T17:22:07Z",
           "comments": []
         }
       ]
