@@ -5,13 +5,13 @@
 wimse                                                         J. Salowey
 Internet-Draft                                                    Venafi
 Intended status: Informational                              Y. Rosomakho
-Expires: 30 September 2024                                       Zscaler
+Expires: 20 October 2024                                         Zscaler
                                                            H. Tschofenig
-                                                           29 March 2024
+                                                           18 April 2024
 
 
   Workload Identity in a Multi System Environment (WIMSE) Architecture
-                    draft-salowey-wimse-arch-latest
+                      draft-ietf-wimse-arch-latest
 
 Abstract
 
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 September 2024.
+   This Internet-Draft will expire on 20 October 2024.
 
 Copyright Notice
 
