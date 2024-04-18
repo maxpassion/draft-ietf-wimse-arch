@@ -11,7 +11,7 @@ Expires: 20 October 2024                                         Zscaler
 
 
   Workload Identity in a Multi System Environment (WIMSE) Architecture
-                    draft-salowey-wimse-arch-latest
+                      draft-ietf-wimse-arch-latest
 
 Abstract
 
