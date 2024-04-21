@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-18T01:17:33.888937+00:00",
+  "timestamp": "2024-04-21T01:23:48.626790+00:00",
   "repo": "jsalowey/wimse-arch",
   "labels": [
     {
@@ -1016,6 +1016,34 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 30,
+      "id": "PR_kwDOLPTb0M5s_3ZB",
+      "title": "renaming to wg document",
+      "url": "https://github.com/jsalowey/wimse-arch/pull/30",
+      "state": "MERGED",
+      "author": "jsalowey",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-18T04:16:05Z",
+      "updatedAt": "2024-04-18T04:26:09Z",
+      "baseRepository": "jsalowey/wimse-arch",
+      "baseRefName": "main",
+      "baseRefOid": "a3843f1b5199511a5645b0fc37447f1b2aff566b",
+      "headRepository": "jsalowey/wimse-arch",
+      "headRefName": "wg-document",
+      "headRefOid": "ea1548aa4c327e92b980c1067769d5ddc027da9b",
+      "closedAt": "2024-04-18T04:26:09Z",
+      "mergedAt": "2024-04-18T04:26:09Z",
+      "mergedBy": "jsalowey",
+      "mergeCommit": {
+        "oid": "6ebcb89502abf72365504ae5b2338c841a12ae7c"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
