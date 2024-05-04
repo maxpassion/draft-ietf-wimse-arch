@@ -5,9 +5,9 @@
 Workload Identity in Multi System Environments                J. Salowey
 Internet-Draft                                                    Venafi
 Intended status: Informational                              Y. Rosomakho
-Expires: 4 November 2024                                         Zscaler
+Expires: 5 November 2024                                         Zscaler
                                                            H. Tschofenig
-                                                              3 May 2024
+                                                              4 May 2024
 
 
   Workload Identity in a Multi System Environment (WIMSE) Architecture
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 November 2024.
+   This Internet-Draft will expire on 5 November 2024.
 
 Copyright Notice
 
