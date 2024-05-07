@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-05T01:24:57.079072+00:00",
+  "timestamp": "2024-05-07T01:21:03.397800+00:00",
   "repo": "ietf-wg-wimse/draft-ietf-wimse-arch",
   "labels": [
     {
@@ -247,6 +247,54 @@
       "body": "There are various types of context that should be mentioned in relevant locations of the document. We also need to make context as a relevant part of the flow",
       "createdAt": "2024-03-20T23:06:05Z",
       "updatedAt": "2024-03-20T23:06:05Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOLPTb0M6H3kCv",
+      "title": "Discussion Venues",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/31",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Please update the venue.",
+      "createdAt": "2024-05-05T11:53:04Z",
+      "updatedAt": "2024-05-05T11:53:04Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 32,
+      "id": "I_kwDOLPTb0M6H3kJg",
+      "title": "Terminology: Attestation",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/32",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The wording here (Sec. 2) cannot be (and IMO, should be) distinguished from \"workload authentication\", where the basic identity of the workload is validated, even in the absence of any trusted environment.\r\n",
+      "createdAt": "2024-05-05T11:53:55Z",
+      "updatedAt": "2024-05-05T11:53:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 33,
+      "id": "I_kwDOLPTb0M6H3kLy",
+      "title": "Authorization",
+      "url": "https://github.com/ietf-wg-wimse/draft-ietf-wimse-arch/issues/33",
+      "state": "OPEN",
+      "author": "yaronf",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Sec. 3.2.1 has \"authorization\" in the title, but really focuses on authentication. We should mention that the architecture needs to support authz policies within each trust domain, starting with the basic \"service A is allowed to call service B\". Any workload should be able to include a policy enforcement point (PEP) for incoming requests. There are also cases where a workload needs to be a PEP for outgoing requests, e.g. when calling \"passive\" resources such as data objects.",
+      "createdAt": "2024-05-05T11:54:23Z",
+      "updatedAt": "2024-05-05T11:54:23Z",
       "closedAt": null,
       "comments": []
     }
